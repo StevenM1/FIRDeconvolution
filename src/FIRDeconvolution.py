@@ -114,7 +114,7 @@ class FIRDeconvolution(object):
         # indices of events in the resampled signal, keeping this as a list instead of an array     
         # at this point we take into account the offset encoded in self.deconvolution_interval[0]       
         
-        self.event_times_indices = dict(zip(self.event_names, [((ev + self.deconvolution_interval[0])*self.deconvolution_frequency).astype(int) for ev in events]))
+        self.event_times_indices = dict(zip(self.event_names, [(np.round((ev + self.deconvolution_interval[0])*self.deconvolution_frequency)).astype(int) for ev in events]))
         # convert the durations to samples/ indices also
         self.duration_indices = dict(zip(self.event_names, [(self.durations[ev]*self.deconvolution_frequency).astype(int) for ev in self.event_names]))
 
